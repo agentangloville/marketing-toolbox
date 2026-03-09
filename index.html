@@ -244,17 +244,23 @@ let deleteId = null;
 // --- Storage ---
 function loadTools() {
   try {
-    const raw = localStorage.getItem("marketing-tools");
+    const raw = localStorage.getItem("marketing-tools-v2");
     if (raw) {
       tools = JSON.parse(raw);
     } else {
-      tools = JSON.parse(JSON.stringify(DEFAULT_TOOLS));
-      saveTools();
+      tools = [];
     }
-  } catch { tools = JSON.parse(JSON.stringify(DEFAULT_TOOLS)); saveTools(); }
+  } catch { tools = []; }
+  // Zawsze upewnij się że domyślne narzędzia są obecne
+  DEFAULT_TOOLS.forEach(dt => {
+    if (!tools.find(t => t.id === dt.id)) {
+      tools.push(JSON.parse(JSON.stringify(dt)));
+    }
+  });
+  saveTools();
 }
 function saveTools() {
-  localStorage.setItem("marketing-tools", JSON.stringify(tools));
+  localStorage.setItem("marketing-tools-v2", JSON.stringify(tools));
 }
 
 // --- Auth ---
