@@ -6,277 +6,181 @@
   <title>Marketing Toolbox</title>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'DM Sans', sans-serif; background: #F5F5F5; min-height: 100vh; }
-    ::placeholder { color: #bbb; }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'DM Sans',sans-serif;background:#F5F5F5;min-height:100vh}
+    ::placeholder{color:#bbb}
+
+    /* LOGIN */
+    .login-screen{min-height:100vh;display:flex;align-items:center;justify-content:center;background:#232323;position:relative;overflow:hidden}
+    .login-circle-1{position:absolute;top:-100px;right:-100px;width:300px;height:300px;border-radius:50%;background:rgba(252,210,58,.03);border:1px solid rgba(252,210,58,.08)}
+    .login-circle-2{position:absolute;bottom:-80px;left:10%;width:200px;height:200px;border-radius:50%;background:rgba(66,139,202,.03);border:1px solid rgba(66,139,202,.08)}
+    .login-box{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:48px 40px;max-width:420px;width:90%;text-align:center;position:relative;backdrop-filter:blur(10px)}
+    .login-dot{width:12px;height:12px;border-radius:50%;background:#FCD23A;box-shadow:0 0 16px rgba(252,210,58,.4);margin:0 auto 16px}
+    .login-box h1{color:#fff;font-size:28px;margin-bottom:6px}
+    .login-box h1 span{color:#FCD23A}
+    .login-subtitle{color:rgba(255,255,255,.55);font-size:14px;margin-bottom:32px}
+    .login-input{width:100%;padding:14px 18px;border-radius:10px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);color:#fff;font-size:15px;font-family:'DM Sans',sans-serif;outline:none;transition:border .2s;margin-bottom:16px}
+    .login-input:focus{border-color:#FCD23A}
+    .login-input::placeholder{color:rgba(255,255,255,.3)}
+    .login-btn{width:100%;padding:14px;border-radius:10px;border:none;background:#FCD23A;color:#232323;font-size:15px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;transition:transform .15s;box-shadow:0 4px 20px rgba(252,210,58,.3)}
+    .login-btn:hover{transform:scale(1.02)}
+    .login-error{color:#e74c3c;font-size:13px;margin-top:12px;min-height:20px}
 
     /* HERO */
-    .hero {
-      background: #232323;
-      padding: 48px 24px 40px;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero-circle-1 {
-      position: absolute; top: -60px; right: -60px; width: 200px; height: 200px;
-      border-radius: 50%; background: rgba(252,210,58,0.03); border: 1px solid rgba(252,210,58,0.08);
-    }
-    .hero-circle-2 {
-      position: absolute; bottom: -30px; left: 20%; width: 120px; height: 120px;
-      border-radius: 50%; background: rgba(66,139,202,0.03); border: 1px solid rgba(66,139,202,0.08);
-    }
-    .hero-inner { max-width: 1100px; margin: 0 auto; position: relative; }
-    .hero-tag {
-      display: flex; align-items: center; gap: 12px; margin-bottom: 8px;
-    }
-    .hero-dot {
-      width: 10px; height: 10px; border-radius: 50%; background: #FCD23A;
-      box-shadow: 0 0 12px rgba(252,210,58,0.4);
-    }
-    .hero-label {
-      font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 3px;
-      color: #FCD23A; text-transform: uppercase;
-    }
-    .hero h1 {
-      font-size: clamp(28px, 5vw, 44px); font-weight: 700; color: #fff;
-      margin: 0 0 10px; line-height: 1.15;
-    }
-    .hero h1 span { color: #FCD23A; }
-    .hero-desc { color: rgba(255,255,255,0.72); font-size: 16px; max-width: 500px; }
-    .stats { display: flex; gap: 24px; margin-top: 28px; flex-wrap: wrap; }
-    .stat-box {
-      border-radius: 10px; padding: 14px 22px; min-width: 110;
-    }
-    .stat-box.yellow { background: rgba(252,210,58,0.04); border: 1px solid rgba(252,210,58,0.15); }
-    .stat-box.blue { background: rgba(66,139,202,0.04); border: 1px solid rgba(66,139,202,0.15); }
-    .stat-value {
-      font-size: 26px; font-weight: 700; font-family: 'Space Mono', monospace;
-    }
-    .stat-value.yellow { color: #FCD23A; }
-    .stat-value.blue { color: #428BCA; }
-    .stat-label { font-size: 12px; color: rgba(255,255,255,0.72); margin-top: 2px; }
+    .hero{background:#232323;padding:48px 24px 40px;position:relative;overflow:hidden}
+    .hero-circle-1{position:absolute;top:-60px;right:-60px;width:200px;height:200px;border-radius:50%;background:rgba(252,210,58,.03);border:1px solid rgba(252,210,58,.08)}
+    .hero-circle-2{position:absolute;bottom:-30px;left:20%;width:120px;height:120px;border-radius:50%;background:rgba(66,139,202,.03);border:1px solid rgba(66,139,202,.08)}
+    .hero-inner{max-width:1100px;margin:0 auto;position:relative}
+    .hero-top{display:flex;justify-content:space-between;align-items:flex-start}
+    .hero-tag{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+    .hero-dot{width:10px;height:10px;border-radius:50%;background:#FCD23A;box-shadow:0 0 12px rgba(252,210,58,.4)}
+    .hero-label{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:3px;color:#FCD23A;text-transform:uppercase}
+    .logout-btn{padding:8px 16px;border-radius:8px;border:1px solid rgba(255,255,255,.15);background:transparent;color:rgba(255,255,255,.6);font-size:12px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s}
+    .logout-btn:hover{border-color:rgba(255,255,255,.3);color:rgba(255,255,255,.85)}
+    .hero h1{font-size:clamp(28px,5vw,44px);font-weight:700;color:#fff;margin:0 0 10px;line-height:1.15}
+    .hero h1 span{color:#FCD23A}
+    .hero-desc{color:rgba(255,255,255,.72);font-size:16px;max-width:500px}
+    .stats{display:flex;gap:24px;margin-top:28px;flex-wrap:wrap}
+    .stat-box{border-radius:10px;padding:14px 22px;min-width:110px}
+    .stat-box.yellow{background:rgba(252,210,58,.04);border:1px solid rgba(252,210,58,.15)}
+    .stat-box.blue{background:rgba(66,139,202,.04);border:1px solid rgba(66,139,202,.15)}
+    .stat-value{font-size:26px;font-weight:700;font-family:'Space Mono',monospace}
+    .stat-value.yellow{color:#FCD23A}
+    .stat-value.blue{color:#428BCA}
+    .stat-label{font-size:12px;color:rgba(255,255,255,.72);margin-top:2px}
 
     /* TOOLBAR */
-    .container { max-width: 1100px; margin: 0 auto; padding: 24px 24px 0; }
-    .toolbar {
-      display: flex; flex-wrap: wrap; gap: 12px; align-items: center;
-      justify-content: space-between; margin-bottom: 20px;
-    }
-    .filters { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
-    .filter-btn {
-      padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600;
-      cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.2s;
-      border: 1px solid #ddd; background: #fff; color: #555;
-    }
-    .filter-btn.active {
-      border: 2px solid #428BCA; background: #428BCA; color: #fff;
-    }
-    .actions { display: flex; gap: 10px; align-items: center; }
-    .search-input {
-      padding: 9px 16px; border-radius: 8px; border: 1px solid #ddd; font-size: 13px;
-      font-family: 'DM Sans', sans-serif; outline: none; width: 160px; transition: border 0.2s;
-    }
-    .search-input:focus { border-color: #428BCA; }
-    .add-btn {
-      padding: 9px 20px; border-radius: 8px; border: none; background: #FCD23A;
-      color: #232323; font-size: 14px; font-weight: 700; cursor: pointer;
-      font-family: 'DM Sans', sans-serif; display: flex; align-items: center; gap: 6px;
-      box-shadow: 0 2px 12px rgba(252,210,58,0.27); transition: transform 0.15s;
-    }
-    .add-btn:hover { transform: scale(1.03); }
+    .container{max-width:1100px;margin:0 auto;padding:24px 24px 0}
+    .toolbar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin-bottom:20px}
+    .filters{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+    .filter-btn{padding:8px 16px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;border:1px solid #ddd;background:#fff;color:#555}
+    .filter-btn.active{border:2px solid #428BCA;background:#428BCA;color:#fff}
+    .actions{display:flex;gap:10px;align-items:center}
+    .search-input{padding:9px 16px;border-radius:8px;border:1px solid #ddd;font-size:13px;font-family:'DM Sans',sans-serif;outline:none;width:160px;transition:border .2s}
+    .search-input:focus{border-color:#428BCA}
+    .add-btn{padding:9px 20px;border-radius:8px;border:none;background:#FCD23A;color:#232323;font-size:14px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;display:flex;align-items:center;gap:6px;box-shadow:0 2px 12px rgba(252,210,58,.27);transition:transform .15s}
+    .add-btn:hover{transform:scale(1.03)}
 
     /* FORM */
-    .form-panel {
-      background: #fff; border-radius: 14px; padding: 28px; margin-bottom: 24px;
-      border: 2px solid #FCD23A; box-shadow: 0 4px 24px rgba(252,210,58,0.08);
-      animation: fadeUp 0.3s ease;
-    }
-    .form-header {
-      display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;
-    }
-    .form-header h3 { font-size: 18px; color: #232323; }
-    .close-btn {
-      background: none; border: none; font-size: 22px; cursor: pointer; color: #666;
-    }
-    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .form-label { font-size: 12px; font-weight: 600; color: #666; display: block; margin-bottom: 6px; }
-    .form-input {
-      width: 100%; padding: 10px 14px; border-radius: 8px; border: 1px solid #ddd;
-      font-size: 14px; font-family: 'DM Sans', sans-serif; transition: border 0.2s;
-      background: #fafafa; outline: none;
-    }
-    .form-input:focus { border-color: #428BCA; }
-    .form-actions { display: flex; gap: 10px; margin-top: 20px; }
-    .btn-primary {
-      padding: 10px 24px; border-radius: 8px; border: none; background: #FCD23A;
-      color: #232323; font-size: 14px; font-weight: 700; cursor: pointer;
-      font-family: 'DM Sans', sans-serif; box-shadow: 0 2px 12px rgba(252,210,58,0.27);
-    }
-    .btn-secondary {
-      padding: 10px 24px; border-radius: 8px; border: 1px solid #ddd; background: #fff;
-      color: #555; font-size: 14px; font-weight: 500; cursor: pointer;
-      font-family: 'DM Sans', sans-serif;
-    }
-    .btn-danger {
-      padding: 10px 24px; border-radius: 8px; border: none; background: #e74c3c;
-      color: #fff; font-size: 14px; font-weight: 700; cursor: pointer;
-      font-family: 'DM Sans', sans-serif;
-    }
+    .form-panel{background:#fff;border-radius:14px;padding:28px;margin-bottom:24px;border:2px solid #FCD23A;box-shadow:0 4px 24px rgba(252,210,58,.08);animation:fadeUp .3s ease}
+    .form-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+    .form-header h3{font-size:18px;color:#232323}
+    .close-btn{background:none;border:none;font-size:22px;cursor:pointer;color:#666}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .form-label{font-size:12px;font-weight:600;color:#666;display:block;margin-bottom:6px}
+    .form-input{width:100%;padding:10px 14px;border-radius:8px;border:1px solid #ddd;font-size:14px;font-family:'DM Sans',sans-serif;transition:border .2s;background:#fafafa;outline:none}
+    .form-input:focus{border-color:#428BCA}
+    .form-actions{display:flex;gap:10px;margin-top:20px}
+    .btn-primary{padding:10px 24px;border-radius:8px;border:none;background:#FCD23A;color:#232323;font-size:14px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;box-shadow:0 2px 12px rgba(252,210,58,.27)}
+    .btn-secondary{padding:10px 24px;border-radius:8px;border:1px solid #ddd;background:#fff;color:#555;font-size:14px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif}
+    .btn-danger{padding:10px 24px;border-radius:8px;border:none;background:#e74c3c;color:#fff;font-size:14px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif}
 
     /* CARDS */
-    .cards-grid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 18px; padding-bottom: 60px;
-    }
-    .card {
-      background: #fff; border-radius: 14px; padding: 24px; border: 1px solid #e8e8e8;
-      position: relative; transition: all 0.25s ease; animation: fadeUp 0.4s ease both;
-    }
-    .card:hover {
-      transform: translateY(-3px); box-shadow: 0 8px 30px rgba(0,0,0,0.08);
-      border-color: rgba(66,139,202,0.27);
-    }
-    .card-badge {
-      display: inline-flex; align-items: center; gap: 5px; padding: 4px 10px;
-      border-radius: 6px; background: rgba(66,139,202,0.05); border: 1px solid rgba(66,139,202,0.13);
-      font-size: 11px; font-weight: 600; color: #428BCA; margin-bottom: 14px;
-    }
-    .card-actions { position: absolute; top: 18px; right: 18px; display: flex; gap: 4px; }
-    .icon-btn {
-      background: none; border: none; cursor: pointer; font-size: 14px; padding: 4px;
-      border-radius: 4px; transition: background 0.15s;
-    }
-    .icon-btn:hover { background: #f0f0f0; }
-    .card h3 { margin: 0 0 8px; font-size: 18px; font-weight: 700; color: #232323; }
-    .card p { margin: 0 0 16px; font-size: 13px; color: #555; line-height: 1.5; }
-    .card-footer { display: flex; justify-content: space-between; align-items: center; }
-    .open-link {
-      display: inline-flex; align-items: center; gap: 6px; padding: 8px 18px;
-      border-radius: 8px; background: #FCD23A; color: #232323; font-size: 13px;
-      font-weight: 700; text-decoration: none; transition: transform 0.15s;
-      box-shadow: 0 2px 8px rgba(252,210,58,0.2);
-    }
-    .open-link:hover { transform: scale(1.04); }
-    .card-date { font-size: 11px; color: #666; font-family: 'Space Mono', monospace; }
-    .card-url {
-      margin-top: 12px; padding: 6px 10px; background: #F5F5F5; border-radius: 6px;
-      font-size: 11px; color: #666; font-family: 'Space Mono', monospace;
-      overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
-    }
+    .cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;padding-bottom:60px}
+    .card{background:#fff;border-radius:14px;padding:24px;border:1px solid #e8e8e8;position:relative;transition:all .25s ease;animation:fadeUp .4s ease both}
+    .card:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(0,0,0,.08);border-color:rgba(66,139,202,.27)}
+    .card-badge{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:6px;background:rgba(66,139,202,.05);border:1px solid rgba(66,139,202,.13);font-size:11px;font-weight:600;color:#428BCA;margin-bottom:14px}
+    .card-actions{position:absolute;top:18px;right:18px;display:flex;gap:4px}
+    .icon-btn{background:none;border:none;cursor:pointer;font-size:14px;padding:4px;border-radius:4px;transition:background .15s}
+    .icon-btn:hover{background:#f0f0f0}
+    .card h3{margin:0 0 8px;font-size:18px;font-weight:700;color:#232323}
+    .card p{margin:0 0 16px;font-size:13px;color:#555;line-height:1.5}
+    .card-footer{display:flex;justify-content:space-between;align-items:center}
+    .open-link{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;border-radius:8px;background:#FCD23A;color:#232323;font-size:13px;font-weight:700;text-decoration:none;transition:transform .15s;box-shadow:0 2px 8px rgba(252,210,58,.2)}
+    .open-link:hover{transform:scale(1.04)}
+    .card-date{font-size:11px;color:#666;font-family:'Space Mono',monospace}
+    .card-url{margin-top:12px;padding:6px 10px;background:#F5F5F5;border-radius:6px;font-size:11px;color:#666;font-family:'Space Mono',monospace;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 
-    /* EMPTY */
-    .empty { grid-column: 1 / -1; text-align: center; padding: 60px; color: #666; }
-    .empty-icon { font-size: 40px; margin-bottom: 12px; }
+    .empty{grid-column:1/-1;text-align:center;padding:60px;color:#666}
+    .empty-icon{font-size:40px;margin-bottom:12px}
 
     /* MODAL */
-    .modal-overlay {
-      position: fixed; inset: 0; background: rgba(0,0,0,0.5); display: flex;
-      align-items: center; justify-content: center; z-index: 999;
-    }
-    .modal-box {
-      background: #fff; border-radius: 16px; padding: 32px; max-width: 380px;
-      width: 90%; text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.2);
-    }
-    .modal-icon { font-size: 36px; margin-bottom: 12px; }
-    .modal-box h3 { margin: 0 0 8px; color: #232323; }
-    .modal-box p { color: #666; font-size: 14px; margin-bottom: 24px; }
-    .modal-actions { display: flex; gap: 10px; justify-content: center; }
+    .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;z-index:999}
+    .modal-box{background:#fff;border-radius:16px;padding:32px;max-width:380px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.2)}
+    .modal-icon{font-size:36px;margin-bottom:12px}
+    .modal-box h3{margin:0 0 8px;color:#232323}
+    .modal-box p{color:#666;font-size:14px;margin-bottom:24px}
+    .modal-actions{display:flex;gap:10px;justify-content:center}
 
     /* TOAST */
-    .toast {
-      position: fixed; top: 24px; right: 24px; background: #232323; color: #FCD23A;
-      padding: 14px 28px; border-radius: 10px; font-size: 14px; font-weight: 600;
-      z-index: 1000; box-shadow: 0 8px 32px rgba(0,0,0,0.25);
-      border: 1px solid rgba(252,210,58,0.2); animation: slideIn 0.3s ease;
-    }
+    .toast{position:fixed;top:24px;right:24px;background:#232323;color:#FCD23A;padding:14px 28px;border-radius:10px;font-size:14px;font-weight:600;z-index:1000;box-shadow:0 8px 32px rgba(0,0,0,.25);border:1px solid rgba(252,210,58,.2);animation:slideIn .3s ease}
 
-    .hidden { display: none !important; }
+    .hidden{display:none!important}
 
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(16px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes slideIn {
-      from { opacity: 0; transform: translateX(20px); }
-      to { opacity: 1; transform: translateX(0); }
-    }
+    @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes slideIn{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:translateX(0)}}
 
-    @media (max-width: 600px) {
-      .form-grid { grid-template-columns: 1fr; }
-      .toolbar { flex-direction: column; align-items: stretch; }
-      .actions { justify-content: space-between; }
-      .search-input { flex: 1; }
+    @media(max-width:600px){
+      .form-grid{grid-template-columns:1fr}
+      .toolbar{flex-direction:column;align-items:stretch}
+      .actions{justify-content:space-between}
+      .search-input{flex:1}
+      .login-box{padding:36px 24px}
     }
   </style>
 </head>
 <body>
 
-  <!-- TOAST -->
+<!-- LOGIN -->
+<div id="login-screen" class="login-screen">
+  <div class="login-circle-1"></div>
+  <div class="login-circle-2"></div>
+  <div class="login-box">
+    <div class="login-dot"></div>
+    <h1>Marketing <span>Toolbox</span></h1>
+    <p class="login-subtitle">Wpisz hasło, aby uzyskać dostęp</p>
+    <input type="password" class="login-input" id="login-password" placeholder="Hasło dostępu" />
+    <button class="login-btn" id="login-btn">Zaloguj się</button>
+    <div class="login-error" id="login-error"></div>
+  </div>
+</div>
+
+<!-- APP -->
+<div id="app" class="hidden">
   <div id="toast" class="toast hidden"></div>
 
-  <!-- HERO -->
   <div class="hero">
     <div class="hero-circle-1"></div>
     <div class="hero-circle-2"></div>
     <div class="hero-inner">
-      <div class="hero-tag">
-        <div class="hero-dot"></div>
-        <span class="hero-label">Marketing Toolbox</span>
+      <div class="hero-top">
+        <div>
+          <div class="hero-tag">
+            <div class="hero-dot"></div>
+            <span class="hero-label">Marketing Toolbox</span>
+          </div>
+        </div>
+        <button class="logout-btn" id="logout-btn">Wyloguj</button>
       </div>
       <h1>Repozytorium <span>narzędzi</span></h1>
       <p class="hero-desc">Wszystkie narzędzia marketingowe w jednym miejscu. Dodawaj, zarządzaj i prezentuj.</p>
       <div class="stats">
-        <div class="stat-box yellow">
-          <div class="stat-value yellow" id="stat-total">0</div>
-          <div class="stat-label">Narzędzi</div>
-        </div>
-        <div class="stat-box blue">
-          <div class="stat-value blue" id="stat-cats">0</div>
-          <div class="stat-label">Kategorii</div>
-        </div>
-        <div class="stat-box yellow">
-          <div class="stat-value yellow" id="stat-month">0</div>
-          <div class="stat-label">W tym miesiącu</div>
-        </div>
+        <div class="stat-box yellow"><div class="stat-value yellow" id="stat-total">0</div><div class="stat-label">Narzędzi</div></div>
+        <div class="stat-box blue"><div class="stat-value blue" id="stat-cats">0</div><div class="stat-label">Kategorii</div></div>
+        <div class="stat-box yellow"><div class="stat-value yellow" id="stat-month">0</div><div class="stat-label">W tym miesiącu</div></div>
       </div>
     </div>
   </div>
 
-  <!-- TOOLBAR -->
   <div class="container">
     <div class="toolbar">
       <div class="filters" id="filters"></div>
       <div class="actions">
         <input type="text" class="search-input" id="search" placeholder="Szukaj..." />
-        <button class="add-btn" id="add-btn">
-          <span style="font-size:18px;line-height:1">+</span> Dodaj
-        </button>
+        <button class="add-btn" id="add-btn"><span style="font-size:18px;line-height:1">+</span> Dodaj</button>
       </div>
     </div>
 
-    <!-- FORM -->
     <div class="form-panel hidden" id="form-panel">
       <div class="form-header">
         <h3 id="form-title">➕ Nowe narzędzie</h3>
         <button class="close-btn" id="form-close">✕</button>
       </div>
       <div class="form-grid">
-        <div>
-          <label class="form-label">Nazwa *</label>
-          <input class="form-input" id="f-name" placeholder="np. Kalkulator ROI" />
-        </div>
-        <div>
-          <label class="form-label">URL *</label>
-          <input class="form-input" id="f-url" placeholder="np. kalkulator-roi.vercel.app" />
-        </div>
-        <div>
-          <label class="form-label">Kategoria</label>
-          <select class="form-input" id="f-category"></select>
-        </div>
-        <div>
-          <label class="form-label">Opis</label>
-          <input class="form-input" id="f-desc" placeholder="Krótki opis narzędzia..." />
-        </div>
+        <div><label class="form-label">Nazwa *</label><input class="form-input" id="f-name" placeholder="np. Generator ofert" /></div>
+        <div><label class="form-label">URL *</label><input class="form-input" id="f-url" placeholder="np. narzedzie.vercel.app" /></div>
+        <div><label class="form-label">Kategoria</label><select class="form-input" id="f-category"></select></div>
+        <div><label class="form-label">Opis</label><input class="form-input" id="f-desc" placeholder="Krótki opis narzędzia..." /></div>
       </div>
       <div class="form-actions">
         <button class="btn-primary" id="form-submit">Dodaj narzędzie</button>
@@ -284,26 +188,53 @@
       </div>
     </div>
 
-    <!-- CARDS -->
     <div class="cards-grid" id="cards-grid"></div>
   </div>
+</div>
 
-  <!-- DELETE MODAL -->
-  <div class="modal-overlay hidden" id="modal">
-    <div class="modal-box">
-      <div class="modal-icon">⚠️</div>
-      <h3>Na pewno usunąć?</h3>
-      <p>Tego nie można cofnąć.</p>
-      <div class="modal-actions">
-        <button class="btn-danger" id="modal-confirm">Usuń</button>
-        <button class="btn-secondary" id="modal-cancel">Anuluj</button>
-      </div>
+<!-- DELETE MODAL -->
+<div class="modal-overlay hidden" id="modal">
+  <div class="modal-box">
+    <div class="modal-icon">⚠️</div>
+    <h3>Na pewno usunąć?</h3>
+    <p>Tego nie można cofnąć.</p>
+    <div class="modal-actions">
+      <button class="btn-danger" id="modal-confirm">Usuń</button>
+      <button class="btn-secondary" id="modal-cancel">Anuluj</button>
     </div>
   </div>
+</div>
 
 <script>
+// =============================================
+// HASŁO — zmień na swoje
+// =============================================
+const ACCESS_PASSWORD = "1105";
+
+// =============================================
+// DOMYŚLNE NARZĘDZIA (wgrane na start)
+// =============================================
+const DEFAULT_TOOLS = [
+  {
+    id: "tool_1",
+    name: "Generator Ofert",
+    description: "Narzędzie do automatycznego generowania spersonalizowanych ofert handlowych.",
+    url: "https://generatoroferty.vercel.app/",
+    category: "Landing Page",
+    date: "2026-03-09"
+  },
+  {
+    id: "tool_2",
+    name: "Generator Mailingów",
+    description: "Kreator kampanii mailingowych z gotowymi szablonami i podglądem na żywo.",
+    url: "https://generatormailingow.vercel.app/",
+    category: "Newsletter",
+    date: "2026-03-09"
+  }
+];
+
 const CATEGORIES = ["Wszystkie", "Landing Page", "Newsletter", "Video", "Inne"];
-const CAT_ICONS = { "Landing Page": "🌐", Newsletter: "📧", Video: "🎬", Inne: "🔧" };
+const CAT_ICONS = {"Landing Page":"🌐", Newsletter:"📧", Video:"🎬", Inne:"🔧"};
 
 let tools = [];
 let activeFilter = "Wszystkie";
@@ -317,20 +248,46 @@ function loadTools() {
     if (raw) {
       tools = JSON.parse(raw);
     } else {
-      tools = [];
+      tools = JSON.parse(JSON.stringify(DEFAULT_TOOLS));
       saveTools();
     }
-  } catch { tools = []; }
+  } catch { tools = JSON.parse(JSON.stringify(DEFAULT_TOOLS)); saveTools(); }
 }
 function saveTools() {
   localStorage.setItem("marketing-tools", JSON.stringify(tools));
 }
 
+// --- Auth ---
+function checkSession() {
+  if (sessionStorage.getItem("toolbox-auth") === "true") showApp();
+}
+function attemptLogin() {
+  const pw = document.getElementById("login-password").value;
+  if (pw === ACCESS_PASSWORD) {
+    sessionStorage.setItem("toolbox-auth", "true");
+    showApp();
+  } else {
+    document.getElementById("login-error").textContent = "Nieprawidłowe hasło";
+    document.getElementById("login-password").value = "";
+  }
+}
+function logout() {
+  sessionStorage.removeItem("toolbox-auth");
+  document.getElementById("app").classList.add("hidden");
+  document.getElementById("login-screen").classList.remove("hidden");
+  document.getElementById("login-password").value = "";
+  document.getElementById("login-error").textContent = "";
+}
+function showApp() {
+  document.getElementById("login-screen").classList.add("hidden");
+  document.getElementById("app").classList.remove("hidden");
+  initApp();
+}
+
 // --- Toast ---
 function showToast(msg) {
   const t = document.getElementById("toast");
-  t.textContent = msg;
-  t.classList.remove("hidden");
+  t.textContent = msg; t.classList.remove("hidden");
   setTimeout(() => t.classList.add("hidden"), 2500);
 }
 
@@ -347,12 +304,11 @@ function updateStats() {
 
 // --- Filters ---
 function renderFilters() {
-  const el = document.getElementById("filters");
-  el.innerHTML = "";
+  const el = document.getElementById("filters"); el.innerHTML = "";
   CATEGORIES.forEach(cat => {
     const btn = document.createElement("button");
     btn.className = "filter-btn" + (activeFilter === cat ? " active" : "");
-    btn.textContent = (cat !== "Wszystkie" ? (CAT_ICONS[cat] || "") + " " : "") + cat;
+    btn.textContent = (cat !== "Wszystkie" ? (CAT_ICONS[cat]||"") + " " : "") + cat;
     btn.onclick = () => { activeFilter = cat; renderFilters(); renderCards(); };
     el.appendChild(btn);
   });
@@ -360,13 +316,10 @@ function renderFilters() {
 
 // --- Category select ---
 function renderCategorySelect() {
-  const sel = document.getElementById("f-category");
-  sel.innerHTML = "";
+  const sel = document.getElementById("f-category"); sel.innerHTML = "";
   CATEGORIES.filter(c => c !== "Wszystkie").forEach(c => {
     const opt = document.createElement("option");
-    opt.value = c;
-    opt.textContent = c;
-    sel.appendChild(opt);
+    opt.value = c; opt.textContent = c; sel.appendChild(opt);
   });
 }
 
@@ -375,45 +328,35 @@ function renderCards() {
   const grid = document.getElementById("cards-grid");
   const search = document.getElementById("search").value.toLowerCase();
   grid.innerHTML = "";
-
   const filtered = tools.filter(t => {
     const matchCat = activeFilter === "Wszystkie" || t.category === activeFilter;
-    const matchSearch = !search || t.name.toLowerCase().includes(search) || t.description.toLowerCase().includes(search);
+    const matchSearch = !search || t.name.toLowerCase().includes(search) || (t.description||"").toLowerCase().includes(search);
     return matchCat && matchSearch;
   });
-
   if (filtered.length === 0) {
-    grid.innerHTML = '<div class="empty"><div class="empty-icon">🔍</div><div>Brak narzędzi w tej kategorii</div></div>';
+    grid.innerHTML = '<div class="empty"><div class="empty-icon">🔍</div><div>Brak narzędzi — kliknij "+ Dodaj" aby dodać pierwsze</div></div>';
     return;
   }
-
   filtered.forEach((tool, i) => {
     const card = document.createElement("div");
-    card.className = "card";
-    card.style.animationDelay = (i * 0.05) + "s";
+    card.className = "card"; card.style.animationDelay = (i * 0.05) + "s";
     card.innerHTML = `
-      <div class="card-badge">${CAT_ICONS[tool.category] || "🔧"} ${tool.category}</div>
+      <div class="card-badge">${CAT_ICONS[tool.category]||"🔧"} ${tool.category}</div>
       <div class="card-actions">
         <button class="icon-btn" onclick="startEdit('${tool.id}')" title="Edytuj">✏️</button>
         <button class="icon-btn" onclick="confirmDelete('${tool.id}')" title="Usuń">🗑️</button>
       </div>
       <h3>${escHtml(tool.name)}</h3>
-      <p>${escHtml(tool.description)}</p>
+      <p>${escHtml(tool.description||"")}</p>
       <div class="card-footer">
         <a href="${escHtml(tool.url)}" target="_blank" rel="noopener noreferrer" class="open-link">Otwórz ↗</a>
         <span class="card-date">${tool.date}</span>
       </div>
-      <div class="card-url">${escHtml(tool.url)}</div>
-    `;
+      <div class="card-url">${escHtml(tool.url)}</div>`;
     grid.appendChild(card);
   });
 }
-
-function escHtml(s) {
-  const d = document.createElement("div");
-  d.textContent = s;
-  return d.innerHTML;
-}
+function escHtml(s){const d=document.createElement("div");d.textContent=s||"";return d.innerHTML}
 
 // --- Form ---
 function openForm(isEdit) {
@@ -421,98 +364,70 @@ function openForm(isEdit) {
   document.getElementById("form-title").textContent = isEdit ? "✏️ Edytuj narzędzie" : "➕ Nowe narzędzie";
   document.getElementById("form-submit").textContent = isEdit ? "Zapisz zmiany" : "Dodaj narzędzie";
 }
-function closeForm() {
-  document.getElementById("form-panel").classList.add("hidden");
-  editId = null;
-  clearForm();
-}
+function closeForm() { document.getElementById("form-panel").classList.add("hidden"); editId = null; clearForm(); }
 function clearForm() {
   document.getElementById("f-name").value = "";
   document.getElementById("f-url").value = "";
   document.getElementById("f-desc").value = "";
   document.getElementById("f-category").value = "Landing Page";
 }
-
 function startEdit(id) {
-  const tool = tools.find(t => t.id === id);
-  if (!tool) return;
+  const tool = tools.find(t => t.id === id); if(!tool)return;
   editId = id;
   document.getElementById("f-name").value = tool.name;
   document.getElementById("f-url").value = tool.url;
-  document.getElementById("f-desc").value = tool.description;
+  document.getElementById("f-desc").value = tool.description || "";
   document.getElementById("f-category").value = tool.category;
   openForm(true);
-  document.getElementById("form-panel").scrollIntoView({ behavior: "smooth" });
+  document.getElementById("form-panel").scrollIntoView({behavior:"smooth"});
 }
-
 function handleSubmit() {
   const name = document.getElementById("f-name").value.trim();
   let url = document.getElementById("f-url").value.trim();
   const desc = document.getElementById("f-desc").value.trim();
   const cat = document.getElementById("f-category").value;
-
-  if (!name || !url) return;
-  if (!/^https?:\/\//.test(url)) url = "https://" + url;
-
+  if(!name||!url)return;
+  if(!/^https?:\/\//.test(url)) url = "https://" + url;
   if (editId) {
-    tools = tools.map(t => t.id === editId ? { ...t, name, url, description: desc, category: cat } : t);
-    showToast("Narzędzie zaktualizowane ✓");
+    tools = tools.map(t => t.id === editId ? {...t, name, url, description:desc, category:cat} : t);
+    showToast("Zaktualizowane ✓");
   } else {
-    tools.unshift({
-      id: Date.now().toString(),
-      name, url, description: desc, category: cat,
-      date: new Date().toISOString().split("T")[0]
-    });
-    showToast("Narzędzie dodane ✓");
+    tools.unshift({ id: "tool_"+Date.now(), name, url, description:desc, category:cat, date:new Date().toISOString().split("T")[0] });
+    showToast("Dodano ✓");
   }
-
-  saveTools();
-  closeForm();
-  updateStats();
-  renderCards();
+  saveTools(); closeForm(); updateStats(); renderCards();
 }
 
 // --- Delete ---
-function confirmDelete(id) {
-  deleteId = id;
-  document.getElementById("modal").classList.remove("hidden");
-}
+function confirmDelete(id) { deleteId = id; document.getElementById("modal").classList.remove("hidden"); }
 function doDelete() {
   tools = tools.filter(t => t.id !== deleteId);
-  saveTools();
-  deleteId = null;
+  saveTools(); deleteId = null;
   document.getElementById("modal").classList.add("hidden");
-  updateStats();
-  renderCards();
-  showToast("Usunięto ✓");
+  updateStats(); renderCards(); showToast("Usunięto ✓");
 }
 
 // --- Init ---
-document.addEventListener("DOMContentLoaded", () => {
-  loadTools();
-  renderCategorySelect();
-  renderFilters();
-  updateStats();
-  renderCards();
-
-  document.getElementById("add-btn").onclick = () => {
-    editId = null; clearForm(); openForm(false);
-  };
+let appInitialized = false;
+function initApp() {
+  if (appInitialized) return;
+  appInitialized = true;
+  loadTools(); renderCategorySelect(); renderFilters(); updateStats(); renderCards();
+  document.getElementById("add-btn").onclick = () => { editId=null; clearForm(); openForm(false); };
   document.getElementById("form-close").onclick = closeForm;
   document.getElementById("form-cancel").onclick = closeForm;
   document.getElementById("form-submit").onclick = handleSubmit;
   document.getElementById("search").oninput = renderCards;
   document.getElementById("modal-confirm").onclick = doDelete;
-  document.getElementById("modal-cancel").onclick = () => {
-    deleteId = null;
-    document.getElementById("modal").classList.add("hidden");
-  };
-  document.getElementById("modal").onclick = (e) => {
-    if (e.target === document.getElementById("modal")) {
-      deleteId = null;
-      document.getElementById("modal").classList.add("hidden");
-    }
-  };
+  document.getElementById("modal-cancel").onclick = () => { deleteId=null; document.getElementById("modal").classList.add("hidden"); };
+  document.getElementById("modal").onclick = (e) => { if(e.target===document.getElementById("modal")){deleteId=null;document.getElementById("modal").classList.add("hidden")}};
+  document.getElementById("logout-btn").onclick = logout;
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("login-btn").onclick = attemptLogin;
+  document.getElementById("login-password").addEventListener("keydown", e => { if(e.key==="Enter") attemptLogin(); });
+  checkSession();
 });
 </script>
 </body>
